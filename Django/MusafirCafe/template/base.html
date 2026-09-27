@@ -28,15 +28,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/menu">Menu</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/services" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/services">Snacks</a></li>
-                            <li><a class="dropdown-item" href="/services">Drinks</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/place-order/">Place Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/order/">Track Order 🎟️</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-semibold" href="/kitchen/">Kitchen 👨‍🍳</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
@@ -45,9 +44,10 @@
                         <a class="nav-link" href="/contact">Contact Us</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" action="{% url 'order_lookup' %}" method="POST" role="search">
+                    {% csrf_token %}
+                    <input class="form-control me-2 text-uppercase" type="search" name="token" placeholder="Token # (e.g. A104)" aria-label="Track Token" required />
+                    <button class="btn btn-outline-warning" type="submit">Track</button>
                 </form>
             </div>
         </div>
